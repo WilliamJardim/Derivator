@@ -1,0 +1,17 @@
+:root{
+    --calculate-button-bg: #ff852e;
+    --calculate-button-bg-hover: #ff9b53;
+    --primary-color: rgb(0, 54, 121);
+    --primary-text-color: rgb(255, 255, 255);
+    --formula-legend-color: #ff852e;
+    --formula-legend-color-hover: #ff9b53;
+    --formcontainer-legend-color: rgb(0, 54, 121);
+    --formcontainer-legend-color-hover: rgb(21, 87, 167)
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}

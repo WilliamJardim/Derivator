@@ -4,11 +4,146 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Derivator </title>
+    <link rel="stylesheet" href="src/style/root.css">
+    <link rel="stylesheet" href="src/style/main-animations.css">
     <link rel="stylesheet" href="src/style/main.css">
+    <link rel="stylesheet" href="src/style/grid/main.css">
+    <link rel="stylesheet" href="src/style/flex/flex-to-side.css">
+    <link rel="stylesheet" href="src/style/flex/horizontal-form-container.css">
+    <link rel="stylesheet" href="src/style/components/form-container.css">
+    <link rel="stylesheet" href="src/style/components/fieldset.css">
+    <link rel="stylesheet" href="src/style/components/input.css">
+    <link rel="stylesheet" href="src/style/components/button.css">
 </head>
 <body>
     
+    <h2> Derivador </h2>
+
+    <div class='main-container'>
     
+        <div class="leftside">
+            <h2> Tela Principal </h2>
+
+            <div class="form-container">
+                <fieldset class="form-container content">
+                    <legend class="formula-legend"> Fórmula </legend>
+                    <input autocomplete="on" list="modelosformulapadrao" class="content commum-input" id="formula-input" placeholder="Escreva a função F(X) ou F(X,Y)"></input>
+                    <datalist id="modelosformulapadrao">
+                        <option value="F(X) = "></option>
+                        <option value="F(X,Y) = "></option>
+                    </datalist>
+                </fieldset>
+            </div>
+
+            <div class="horizontal-form-container">
+                <span class="horizontal-form-container-item">
+                </span>
+                <span class="horizontal-form-container-item">
+                </span>
+
+                <span class="horizontal-form-container-item">
+                    <button class="botao-form" id="btn-calcular"> Calcular </button>
+                </span>
+            </div>
+    
+            <div class="form-container form-container-secundario">
+                <fieldset class="form-container content">
+                    <legend class="normal-legend"> Pontos de interesse </legend>
+                    <input class="content commum-input" id="" placeholder="Digite os pontos separados por virgula"></input>
+                </fieldset>
+            </div>
+    
+            <div class="form-container form-container-secundario">
+                
+                <fieldset class="form-container content">
+                    <legend class="normal-legend"> O que pretendes fazer? </legend>
+    
+                    <div class="horizontal-form-container">
+
+                      <span class="horizontal-form-container-item">
+                        <label class="radio-label" for="derivative">Derivada</label>
+                        <input class="radio-input" type="radio" id="derivative" name="operacao" value="derivative" checked />
+                      </span>
+
+                      <span class="horizontal-form-container-item">
+                        <label class="radio-label" for="limit">Limite</label>
+                        <input class="radio-input" type="radio" id="limit" name="operacao" value="limit" />
+                      </span>
+
+                      <span class="horizontal-form-container-item">
+                        <label class="radio-label" for="integral">Integral</label>
+                        <input class="radio-input" type="radio" id="integral" name="operacao" value="integral" />
+                     </span>
+
+                    </div>
+    
+                </fieldset>
+            </div>
+    
+            <div class="form-container form-container-secundario">
+                <p class="rotulo"> Parâmetros </p>
+                <fieldset class="content">
+                    <legend class="normal-legend"> Configure a ação </legend>
+    
+                    <div class="form-container">
+                        <p> Max-Iterações </p>
+                        <input id="max-iter-input" type="number" value="9000" min="0" placeholder=""></input>
+                    </div>
+    
+                </fieldset>
+            </div>
+    
+            <div class="form-container form-container-secundario">
+                <p class="rotulo"> Visualização Gráfica </p>
+                <fieldset class="content">
+                    <legend class="normal-legend"> Configure a exibição </legend>
+    
+                    <div class="form-container">
+                        <p> Tamanho da fonte </p>
+                        <input class="commum-input" id="font-input" type="number" value="22" min="16" placeholder=""></input>
+                    </div>
+
+                    <div class="form-container">
+                        <p> Recursos </p>
+                        <div class="horizontal-form-container">
+
+                            <span class="horizontal-form-container-item">
+                                <label for="checkDispersaoFuncao"> Gráfico de Dispersão da Função </label>
+                                <input class="checkbox-input" type="checkbox" name="checkDispersaoFuncao" id="checkDispersaoFuncao" checked></input>
+                            </span>
+
+                            <span class="horizontal-form-container-item">
+                                <label for="checkTabelaFuncao"> Tabela da Função </label>
+                                <input class="checkbox-input" type="checkbox" name="checkTabelaFuncao" id="checkTabelaFuncao" checked></input>
+                            </span>
+
+                        </div>  
+                    </div>
+                    
+                </fieldset>
+            </div>
+        </div>
+
+        <div class="rightside">  
+            <h2> Visualização de resultados </h2>
+
+            <div class="form-container form-container-secundario">
+                <p class="rotulo"> Gráfico de dispersão da função </p>
+                <div class="content">
+
+                </div>
+            </div>
+
+            <div class="form-container form-container-secundario">
+                <p class="rotulo"> Tabela </p>
+                <div class="content">
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
 
 </body>
 

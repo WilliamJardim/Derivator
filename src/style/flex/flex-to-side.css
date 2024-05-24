@@ -1,0 +1,4 @@
+.flex-to-side{
+    display: flex;
+    flex-direction: column;
+}

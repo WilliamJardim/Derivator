@@ -1,0 +1,54 @@
+.main-container{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(8, auto);
+}
+
+.main-container .leftside{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(8, auto);
+    row-gap: 1.3rem;
+}
+
+.main-container .leftside h2{
+    text-align: center;
+}
+
+.main-container .leftside .form-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, auto);
+    row-gap: 3px;
+}
+
+.leftside .form-container .rotulo{
+    grid-area: 1 / 1 / 1 / 1;
+}
+
+.leftside .form-container .content{
+    grid-area: 2 / 1 / 2 / 1;
+}
+
+
+.main-container .rightside{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, auto);
+    row-gap: 1.3rem;
+}
+
+.main-container .rightside .form-container{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(2, auto);
+    row-gap: 3px;
+}
+
+.rightside .form-container .rotulo{
+    grid-area: 1 / 1 / 1 / 1;
+}
+
+.rightside .form-container .content{
+    grid-area: 2 / 1 / 2 / 1;
+}

@@ -1,0 +1,39 @@
+@keyframes aparecer {
+    from {
+      scale: 0;
+      opacity: 0.5;
+    }
+    to {
+      scale: auto;
+      opacity: 1;
+    }
+}
+.form-container{
+    animation: 0.6s forwards aparecer;
+}
+
+input:focus{
+    border: solid 3px black;
+}
+input[type='checkbox']:hover{
+    scale: 1.2;
+    transition: 0.2s;
+}
+input[type='radio']:hover{
+    scale: 1.2;
+    transition: 0.2s;
+}
+
+.form-container .normal-legend{
+    background-color: var(--formcontainer-legend-color);
+}
+.form-container:hover .normal-legend{
+    background-color: var(--formcontainer-legend-color-hover);
+}
+
+.form-container .formula-legend{
+    background-color: var(--formula-legend-color);
+}
+.form-container:hover .formula-legend{
+    background-color: var(--formula-legend-color-hover);
+}

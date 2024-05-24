@@ -1,0 +1,33 @@
+.main-container{
+    
+}
+
+.main-container .form-container .rotulo{
+    font-size: 20pt;
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+    font-size: 22pt;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.formula-legend{
+    background-color: var(--formula-legend-color);
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+    text-shadow: 2px 2px 2px black;
+}
+
+#formula-input{
+   
+}
+
+#btn-calcular{
+    background-color: var(--calculate-button-bg);
+    font-weight: bolder;
+}
+#btn-calcular:hover{
+    background-color: var(--calculate-button-bg-hover);
+}
