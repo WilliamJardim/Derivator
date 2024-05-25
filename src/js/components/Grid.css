@@ -1,0 +1,39 @@
+:root{
+    --mygrid-bg-color: white;
+    --mygrid-header-bg-color: rgb(163, 163, 163);
+    --mygrid-bg-row-color: orange;
+    --mygrid-bg-column-color: yellow;
+    --mygrid-bg-first-column-color: orange;
+    --mygrid-header-bg-column-color: rgb(99, 99, 0);
+    --mygrid-foreground-color: black;
+}
+
+.MyGrid-table{
+    width: 100%;
+    table-layout: fixed;
+    justify-self: center;
+    align-self: center;
+    background-color: var(--mygrid-bg-color);
+}
+
+.MyGrid-header-row{
+    width: 100%;
+    background-color: var(--mygrid-header-bg-color);
+}
+
+.MyGrid-row{
+    width: 100%;
+    background-color: var(--mygrid-bg-row-color);
+}
+
+.MyGrid-column{
+    background-color: var(--mygrid-bg-column-color);
+}
+
+.MyGrid-header-row .MyGrid-column{
+    background-color: var(--mygrid-header-bg-column-color);
+}
+
+.MyGrid-first-column{
+    background-color: var(--mygrid-bg-first-column-color);
+}
