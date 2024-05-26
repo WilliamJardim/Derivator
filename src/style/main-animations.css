@@ -3,7 +3,7 @@
  * 
  * Copyright (c) 2024 William Jardim
  * 
- * This file is part of William/Jardim/Derivator.
+ * This file is part of WilliamJardim/Derivator.
  * 
  * WilliamJardim/Derivator is free software: you can redistribute it and/or modify it
  *under the terms of the Affero General Public License as published by Free
