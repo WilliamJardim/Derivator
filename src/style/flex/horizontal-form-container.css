@@ -1,23 +1,9 @@
-/*
- * File Name: horizontal-form-container.css
- * 
- * Copyright (c) 2024 William Jardim
- * 
- * This file is part of WilliamJardim/Derivator.
- * 
- * WilliamJardim/Derivator is free software: you can redistribute it and/or modify it
- *under the terms of the Affero General Public License as published by Free
- * Software Foundation, both version 3 of the License and (at your option) any
- *later version.
- * 
- * WilliamJardim/Derivator is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY
- * or FITNESS FOR A PARTICULAR PURPOSE. Consult the Affero General Public License
- * for more details.
- * 
- * You must have received a copy of the Affero General Public License
- * together with this program. If not, see <https://www.gnu.org/licenses/>.
- */
+/**
+* File Name: horizontal-form-container.css
+*
+* License: Derivator © 2024 by William Alves Jardim is licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/
+*
+*/
 
 .horizontal-form-container{
     display: flex;
