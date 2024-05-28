@@ -10,6 +10,10 @@ var DomUtils = {
 
     Input: {
 
+        getValue(inputId){
+            return document.getElementById(inputId).value;
+        },
+
         getSelectedOption( ratioOrCheckbox_name ){
             let returnValue; //vai depender do tipo do input
             let elementsQuery = [... document.getElementsByName(ratioOrCheckbox_name)];

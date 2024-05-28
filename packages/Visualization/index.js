@@ -17,11 +17,10 @@ var grid = MyGrid.VisualGrid({
                 applies: ['header', 'body'],
                 textColor: 'black',
                 fontSize: '22px',
-                backgroundColor: 'red',
+                backgroundColor: 'blue',
                 bold: false,
                 italic: true,
-                width: 50,
-                cssClass: 'mycustomclass'
+                width: 50
             }
         },
         {
@@ -34,8 +33,7 @@ var grid = MyGrid.VisualGrid({
                 backgroundColor: 'green',
                 bold: false,
                 italic: true,
-                width: 100,
-                cssClass: 'mycustomclass'
+                width: 100
             }
         },
         {
@@ -48,12 +46,10 @@ var grid = MyGrid.VisualGrid({
                 backgroundColor: 'orange',
                 bold: false,
                 italic: true,
-                width: 100,
-                cssClass: 'mycustomclass'
+                width: 100
             }
         }
     ],
-    
     samples: [
         { Nome: 'William', Idade: 20, Tipo: 'Amigo' },
         { Nome: 'Rafael', Idade: 24, Tipo: 'Parente' },
@@ -64,40 +60,5 @@ var grid = MyGrid.VisualGrid({
     autoRender: true,
     
     /*Estilos aplicados diretamente*/
-    style: {
-        title: {
-            textColor: 'black',
-            fontSize: '30px',
-            backgroundColor: 'orange',
-            bold: true,
-            italic: true
-        },
-        header: {
-            textColor: 'black',
-            fontSize: '22px',
-            backgroundColor: '#a2cf63',
-            bold: true,
-            italic: true
-        },
-        body: {
-            textColor: 'black',
-            fontSize: '22px',
-            backgroundColor: '#a0e342',
-            bold: false
-        },
-        //Aplica um estilo especifico para determinadas colunas
-        columns: {
-            '*': {
-                applies: ['header'],
-                textColor: 'black',
-                fontSize: '22px',
-                backgroundColor: 'blue',
-                bold: true,
-                italic: true,
-                width: 100,
-                height: 20,
-                textAlign: 'center'
-            }
-        }
-    }
+    style: {}
 });

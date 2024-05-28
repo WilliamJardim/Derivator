@@ -1,5 +1,7 @@
 /*
  * File Name: VisualGrid.js
+ * Author Name: William Alves Jardim
+ * Author Email: williamalvesjardim@gmail.com
  * 
  * LICENSE: WilliamJardim/Visualization © 2024 by William Alves Jardim is licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/**
 */
@@ -41,6 +43,7 @@ MyGrid.VisualGrid = function(config={}){
     context._autoRender = config['autoRender'] || false;
     context._elementId = config['id'] || String( new Date().getTime() );
     context._emptyColumnValue = config['emptyColumnValue'] || '';
+    context._customGridCSS = config['css'];
 
     //Metadados de cada coluna
     context.columnsConfig = {};
@@ -203,7 +206,7 @@ MyGrid.VisualGrid = function(config={}){
             }
         }
     */
-    context._customStyle = config['css'] ? config['css'] : {
+    context._customStyle = (config['css'] || context._customGridCSS) ? (config['css'] || context._customGridCSS) : {
         table: '',
         title: '',
         header: {
@@ -318,7 +321,7 @@ MyGrid.VisualGrid = function(config={}){
     context.buildLayout = function(){
         context._colunasHtml = ``;
         context._renderedHtmlLines = ``;
-        context._columnsStyle = config['style'] ? config['style']['columns'] ? config['style']['columns'] : {} : {};
+        context._columnsStyle = (config['style'] || context._config['style']) ? (config['style']['columns'] || context._config['style']['columns']) ? (config['style']['columns'] || context._config['style']['columns']) : {} : {};
 
         context._title = config['title'] ? `
             <h2 class='MyGrid-title${(context._customStyle.title || null) ? (' ' + context._customStyle.title) : ''}'> ${ config['title'] } </h2>
@@ -447,11 +450,16 @@ MyGrid.VisualGrid = function(config={}){
     //Update geral desta classe, antes de desenhar a grid
     context._updateGrid = function(){
 
+        if( !context._directStyle['columns'] ){
+            context._directStyle['columns'] = {};
+        }
+
         //Aplica estilos dentro das definições de coluna
         Object.values(context.columnsConfig).forEach(function( columnDict ){
             if( !(context._config['columns'] instanceof Array) && !columnDict.name ){ throw '"columnDict" precisa ter o atributo name!' };
             if( columnDict.style ){
                 context._columnsStyle[ columnDict.name ] = columnDict.style;
+                context._directStyle['columns'][ columnDict.name ] = columnDict.style;
 
                 //Atualiza os getters do ColumnManipulator
                 if( context._columnsStyle[ columnDict.name ].createGettersFromOriginalProperties ){
@@ -471,6 +479,23 @@ MyGrid.VisualGrid = function(config={}){
             context.columnsConfig[ columnName ].values = [... context.columnsConfig[ columnName ].elements].map( ( element )=>{ return element.innerText } );
         });
 
+    }
+
+    //Define a propriedade samples. Note isso vai sobrescrever o samples da grid
+    context.setSamples = function(newSamples){
+        const collectionToSet = newSamples._isSampleColletion ? newSamples : MyGrid.SampleCollection(newSamples);
+        context.sampleCollection.setSamples(collectionToSet.samples);
+        context.samples = context.sampleCollection.samples;
+    }
+
+    //Similar ao setSamples, porém não sobrescreve nada, apenas acrescenta
+    context.addSamples = function(newSamples){
+        const newSampleCollection = newSamples._isSampleColletion ? newSamples : MyGrid.SampleCollection(newSamples);
+        context.sampleCollection.addSamples(newSampleCollection.samples);
+        context.samples = context.sampleCollection.samples;
+
+        //atualiza a grid
+        context.redraw();
     }
 
     //Atualiza a Grid, redesenha

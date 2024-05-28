@@ -14,6 +14,10 @@
     <link rel="stylesheet" href="src/style/components/fieldset.css">
     <link rel="stylesheet" href="src/style/components/input.css">
     <link rel="stylesheet" href="src/style/components/button.css">
+
+    <!-- CSS dos pacotes importados -->
+    <link rel="stylesheet" href="packages/Visualization/src/Grid/VisualGrid.css">
+
 </head>
 <body>
     
@@ -27,7 +31,7 @@
             <div class="form-container">
                 <fieldset class="form-container content">
                     <legend class="formula-legend"> Fórmula </legend>
-                    <input autocomplete="on" list="modelosformulapadrao" class="content commum-input" id="formula-input" placeholder="Escreva a função F(X) ou F(X,Y)"></input>
+                    <input autocomplete="on" list="modelosformulapadrao" class="content commum-input" id="formula-input" placeholder="Escreva a função F(X) ou F(X,Y)" value="F(X) = (X  ^ -X) + 2 * X"></input>
                     <datalist id="modelosformulapadrao">
                         <option value="F(X) = "></option>
                         <option value="F(X,Y) = "></option>
@@ -135,9 +139,16 @@
             </div>
 
             <div class="form-container form-container-secundario">
-                <p class="rotulo"> Tabela </p>
-                <div class="content" id="mygrid-el">
+                <p class="rotulo"> Tabela dos Pontos da Função: </p>
+                <div class="content" id="my-function-grid-el">
 
+                </div>
+            </div>
+
+            <div class="form-container form-container-secundario">
+                <p class="rotulo"> Tabela da Derivada da Função para os pontos: </p>
+                <div class="content" id="my-functionderivate-grid-el">
+                    
                 </div>
             </div>
 
@@ -150,8 +161,16 @@
 <!-- Importando scripts do outro projeto -->
 <script src="packages/javascript-matematica/derivada-funcoes/derivada.js"></script>
 <script src="packages/javascript-matematica/limite-funcoes/limite.js"></script>
+<script src="packages/Visualization/src/Abstract.js"></script>
+<script src="packages/Visualization/src/Grid/ColumnManipulator.js"></script>
+<script src="packages/Visualization/src/Grid/Sample.js"></script>
+<script src="packages/Visualization/src/Grid/SampleCollection.js"></script>
+<script src="packages/Visualization/src/Grid/GridComponent.js"></script>
+<script src="packages/Visualization/src/Grid/VisualGrid.js"></script>
 
+<!-- Importanto scripts deste projeto -->
 <script src="src/js/DomUtils.js"></script>
 <script src="src/js/FunctionUtils.js"></script>
+<script src="src/js/modules/Operacoes.js"></script>
 <script src="src/js/main.js"></script>
 </html>
