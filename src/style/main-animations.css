@@ -45,3 +45,18 @@ input[type='radio']:hover{
 .form-container:hover .formula-legend{
     background-color: var(--formula-legend-color-hover);
 }
+
+@keyframes spanFocus {
+    from {
+      scale: 0.9;
+    }
+    to {
+      scale: 1;
+    }
+}
+.app-warning-span{
+    animation-name: spanFocus;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-duration: 0.6s;
+}   

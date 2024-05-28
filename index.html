@@ -21,17 +21,18 @@
 </head>
 <body>
     
-    <h2> Derivador </h2>
+    <h2 class="noTextSelection"> Derivador </h2>
 
     <div class='main-container'>
     
         <div class="leftside">
-            <h2> Tela Principal </h2>
+            <h2 class="noTextSelection"> Tela Principal </h2>
 
             <div class="form-container">
                 <fieldset class="form-container content">
-                    <legend class="formula-legend"> Fórmula </legend>
-                    <input autocomplete="on" list="modelosformulapadrao" class="content commum-input" id="formula-input" placeholder="Escreva a função F(X) ou F(X,Y)" value="F(X) = (X  ^ -X) + 2 * X"></input>
+                    <span id="formula-warning-container" class="noTextSelection app-warning-span"></span>
+                    <legend class="noTextSelection formula-legend"> Fórmula </legend>
+                    <input autocomplete="on" list="modelosformulapadrao" class="content commum-input" id="formula-input" placeholder="Escreva a função F(X) ou F(X,Y)" value="F(X) = (X  ^ -X) + 2X"></input>
                     <datalist id="modelosformulapadrao">
                         <option value="F(X) = "></option>
                         <option value="F(X,Y) = "></option>
@@ -52,7 +53,8 @@
     
             <div class="form-container form-container-secundario">
                 <fieldset class="form-container content">
-                    <legend class="normal-legend"> Pontos de interesse </legend>
+                    <span id="pontos-warning-container" class="noTextSelection app-warning-span"></span>
+                    <legend class="noTextSelection normal-legend"> Pontos de interesse </legend>
                     <input class="content commum-input" id="pontosInteresse" placeholder="Digite os pontos separados por virgula"></input>
                 </fieldset>
             </div>
@@ -60,22 +62,22 @@
             <div class="form-container form-container-secundario">
                 
                 <fieldset class="form-container content">
-                    <legend class="normal-legend"> O que pretendes fazer? </legend>
+                    <legend class="noTextSelection normal-legend"> O que pretendes fazer? </legend>
     
                     <div class="horizontal-form-container">
 
                       <span class="horizontal-form-container-item">
-                        <label class="radio-label" for="derivative">Derivada</label>
+                        <label class="noTextSelection radio-label" for="derivative">Derivada</label>
                         <input class="radio-input" type="radio" id="derivative" name="operacao" value="derivative" checked />
                       </span>
 
                       <span class="horizontal-form-container-item">
-                        <label class="radio-label" for="limit">Limite</label>
+                        <label class="noTextSelection radio-label" for="limit">Limite</label>
                         <input class="radio-input" type="radio" id="limit" name="operacao" value="limit" />
                       </span>
 
                       <span class="horizontal-form-container-item">
-                        <label class="radio-label" for="integral">Integral</label>
+                        <label class="noTextSelection radio-label" for="integral">Integral</label>
                         <input class="radio-input" type="radio" id="integral" name="operacao" value="integral" />
                      </span>
 
@@ -85,12 +87,12 @@
             </div>
     
             <div class="form-container form-container-secundario">
-                <p class="rotulo"> Parâmetros </p>
+                <p class="noTextSelection rotulo"> Parâmetros </p>
                 <fieldset class="content">
-                    <legend class="normal-legend"> Configure a ação </legend>
+                    <legend class="noTextSelection normal-legend"> Configure a ação </legend>
     
                     <div class="form-container">
-                        <p> Max-Iterações </p>
+                        <p class="noTextSelection"> Max-Iterações </p>
                         <input id="max-iter-input" type="number" value="9000" min="0" placeholder=""></input>
                     </div>
     
@@ -98,26 +100,26 @@
             </div>
     
             <div class="form-container form-container-secundario">
-                <p class="rotulo"> Visualização Gráfica </p>
+                <p class="noTextSelection rotulo"> Visualização Gráfica </p>
                 <fieldset class="content">
-                    <legend class="normal-legend"> Configure a exibição </legend>
+                    <legend class="noTextSelection normal-legend"> Configure a exibição </legend>
     
                     <div class="form-container">
-                        <p> Tamanho da fonte </p>
+                        <p class="noTextSelection"> Tamanho da fonte </p>
                         <input class="commum-input" id="font-input" type="number" value="22" min="16" placeholder=""></input>
                     </div>
 
                     <div class="form-container">
-                        <p> Recursos </p>
+                        <p class="noTextSelection"> Recursos </p>
                         <div class="horizontal-form-container">
 
                             <span class="horizontal-form-container-item">
-                                <label for="checkDispersaoFuncao"> Gráfico de Dispersão da Função </label>
+                                <label class="noTextSelection" for="checkDispersaoFuncao"> Gráfico de Dispersão da Função </label>
                                 <input class="checkbox-input" type="checkbox" name="checkDispersaoFuncao" id="checkDispersaoFuncao" checked></input>
                             </span>
 
                             <span class="horizontal-form-container-item">
-                                <label for="checkTabelaFuncao"> Tabela da Função </label>
+                                <label class="noTextSelection" for="checkTabelaFuncao"> Tabela da Função </label>
                                 <input class="checkbox-input" type="checkbox" name="checkTabelaFuncao" id="checkTabelaFuncao" checked></input>
                             </span>
 
@@ -129,24 +131,24 @@
         </div>
 
         <div class="rightside">  
-            <h2> Visualização de resultados </h2>
+            <h2 class="noTextSelection"> Visualização de resultados </h2>
 
             <div class="form-container form-container-secundario">
-                <p class="rotulo"> Gráfico de dispersão da função </p>
-                <div class="content">
+                <p class="noTextSelection rotulo"> Gráfico de dispersão da função </p>
+                <div class="noTextSelection content">
 
                 </div>
             </div>
 
             <div class="form-container form-container-secundario">
-                <p class="rotulo"> Tabela dos Pontos da Função: </p>
+                <p class="noTextSelection rotulo"> Tabela dos Pontos da Função: </p>
                 <div class="content" id="my-function-grid-el">
 
                 </div>
             </div>
 
             <div class="form-container form-container-secundario">
-                <p class="rotulo"> Tabela da Derivada da Função para os pontos: </p>
+                <p class="noTextSelection rotulo"> Tabela da Derivada da Função para os pontos: </p>
                 <div class="content" id="my-functionderivate-grid-el">
                     
                 </div>
@@ -172,5 +174,6 @@
 <script src="src/js/DomUtils.js"></script>
 <script src="src/js/FunctionUtils.js"></script>
 <script src="src/js/modules/Operacoes.js"></script>
+<script src="src/js/modules/Validations.js"></script>
 <script src="src/js/main.js"></script>
 </html>

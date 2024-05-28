@@ -41,6 +41,12 @@ var DomUtils = {
             }
 
             return returnValue;
+        },
+
+        focus(inputId, delay=200){
+            setTimeout( function(){
+                document.getElementById(inputId).focus();
+            }, delay);
         }
 
     }

@@ -83,6 +83,30 @@ document.getElementById('btn-calcular').onclick = function(){
     //Trata os pontos
     pontosInteresse = pontosInteresse.length == 1 && pontosInteresse[0] == '' ? [] : pontosInteresse;
 
+    //Faz validações
+    const statusValidacao = ValidationsModule.validar({
+        mathFunction: funcaoMatematica,
+        pontos: pontosInteresse
+
+    }, function( resultadoValidacao ){
+        
+        switch(resultadoValidacao.etapa){
+            case 'pontoslength':
+                ValidationsModule.avisarUsuario( 'pontos-warning-container', resultadoValidacao.msg );
+                DomUtils.Input.focus('pontosInteresse', null);
+                break;
+        }
+    });
+
+    if( statusValidacao.status != 'ok' ){
+        return;
+    }
+
+    //Retira os avisos
+    ValidationsModule.sumirAviso('formula-warning-container');
+    ValidationsModule.sumirAviso('pontos-warning-container');
+
+    //Executa a operação
     let resultadosCalculos = calcularOsPontos(funcaoMatematica, pontosInteresse, operacaoSelecionada);
 
     //Trata os resultados para poder servir para alimentar as tabelas

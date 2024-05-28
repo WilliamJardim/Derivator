@@ -21,7 +21,10 @@ var OperacoesModule = {
             resultados[ ponto ] = derivada_por_definicao( funcao, ponto );
         }
 
-        return resultados;
+        return {
+            resultado: resultados,
+            tipoResultado: 'numberic' //Tipo de resultado
+        };
     },
 
     //Chama a operação selecionada
@@ -46,10 +49,13 @@ var OperacoesModule = {
             saidasPorPonto[ pontos[i] ] = saida;
         }
 
-        const resultadoObtido = this[operacao](parametrosTratados) || {};
+        const resultadoObtido_completo = this[operacao](parametrosTratados) || {},
+              resultadoObtido = resultadoObtido_completo.resultado,
+              tipoResultado = resultadoObtido_completo.tipoResultado;
 
         //Retorna um resumo do que foi feito
         return {
+            tipoResultado: tipoResultado,
             funcao: funcaoConvertida,
             funcaoMatematica: funcaoMatematica,
             pontos: pontos,

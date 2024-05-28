@@ -38,3 +38,17 @@ h2{
 #btn-calcular:hover{
     background-color: var(--calculate-button-bg-hover);
 }
+
+.app-warning-span{
+    background-color: yellow;
+    color: black;
+    font-weight: bold;
+    font-size: 18pt;
+    padding: 10px;
+    text-shadow: 2x 2px black;
+    display: none;
+    visibility: hidden;
+    border: solid 4px red;
+    border-radius: 12px;
+}
+
