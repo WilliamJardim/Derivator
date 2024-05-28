@@ -27,9 +27,31 @@ var OperacoesModule = {
         };
     },
 
+    /**Calcular o limite usando o método númerico */
+    limit(parametros){
+        const {funcao, pontos, limitStep, limitLargeStep, maxTentativas} = parametros;
+
+        const resultados = {}; //Contém ponto e resultado
+
+        //Calcula o limite para cada ponto
+        for( let i = 0 ; i < pontos.length ; i++ )
+        {
+            const tendendo = pontos[i];
+            resultados[ tendendo ] = estimar_limite(funcao, tendendo, limitStep, limitLargeStep, maxTentativas);
+        }
+
+        return {
+            resultado: resultados,
+            tipoResultado: 'numberic' //Tipo de resultado
+        };
+    },
+
     //Chama a operação selecionada
     use(operacao, parametros){
         const {funcaoMatematica, pontos} = parametros;
+
+        //Outros parametros que algumas funçoes usam
+        const {maxTentativas, limitStep, limitLargeStep} = parametros;
 
         //Converte a função matemática para uma função javascript
         const funcaoConvertida = FunctionUtils.mathFunctionToFunction( funcaoMatematica );
@@ -37,7 +59,12 @@ var OperacoesModule = {
         //Depois que tratou tudo
         const parametrosTratados = {
             funcao: funcaoConvertida.functionObj,
-            pontos: pontos
+            pontos: pontos,
+
+            //Para os limits
+            maxTentativas: maxTentativas,
+            limitStep: limitStep,
+            limitLargeStep: limitLargeStep
         }
 
         //Processa a saida a função para cada ponto(apenas para arquivar)

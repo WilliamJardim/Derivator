@@ -30,7 +30,7 @@ var gridFuncao = MyGrid.VisualGrid({
     ],
     style: {},
     samples: [],
-    emptyColumnValue: '',
+    emptyColumnValue: 'INDETERMINADO',
     autoRender: true
 });
 
@@ -62,11 +62,16 @@ var gridDerivadaFuncao = MyGrid.VisualGrid({
 });
 
 
-function calcularOsPontos(funcaoMatematica, pontos, operacaoSelecionada){
+function calcularOsPontos(funcaoMatematica, pontos, operacaoSelecionada, maxTentativas, passos, passosLargos){
     //Chama a operação escolhida pelo usuário
     var resultadosCalculos = OperacoesModule.use(operacaoSelecionada, {
         funcaoMatematica: funcaoMatematica,
-        pontos: pontos
+        pontos: pontos,
+
+        //Parametros extras usados em outras operacoes
+        maxTentativas: maxTentativas, 
+        limitStep: passos, 
+        limitLargeStep: passosLargos
     });
 
     return resultadosCalculos;
@@ -80,6 +85,10 @@ document.getElementById('btn-calcular').onclick = function(){
         funcaoMatematica = DomUtils.Input.getValue('formula-input'),
         pontosInteresse = DomUtils.Input.getValue('pontosInteresse').split(',').map( (ponto)=>{ return Number(ponto) } );
     
+    let maxTentativas = Number(DomUtils.Input.getValue('max-iter-input')),
+        passos = Number(DomUtils.Input.getValue('step-input')),
+        passosLargos = Number(DomUtils.Input.getValue('large-step-input'));
+
     //Trata os pontos
     pontosInteresse = pontosInteresse.length == 1 && pontosInteresse[0] == '' ? [] : pontosInteresse;
 
@@ -107,7 +116,7 @@ document.getElementById('btn-calcular').onclick = function(){
     ValidationsModule.sumirAviso('pontos-warning-container');
 
     //Executa a operação
-    let resultadosCalculos = calcularOsPontos(funcaoMatematica, pontosInteresse, operacaoSelecionada);
+    let resultadosCalculos = calcularOsPontos(funcaoMatematica, pontosInteresse, operacaoSelecionada, maxTentativas, passos, passosLargos);
 
     //Trata os resultados para poder servir para alimentar as tabelas
     const samplesGridFuncao = [];
@@ -132,4 +141,8 @@ document.getElementById('btn-calcular').onclick = function(){
 
     gridDerivadaFuncao.setSamples(samplesGridDerivadaFuncao);
     gridDerivadaFuncao.redraw();
+}
+
+document.getElementById('pontosInteresse').onkeydown = function(){
+    ValidationsModule.sumirAviso('pontos-warning-container');
 }
