@@ -23,7 +23,8 @@ var OperacoesModule = {
 
         return {
             resultado: resultados,
-            tipoResultado: 'numberic' //Tipo de resultado
+            tipoResultado: 'numberic', //Tipo de resultado,
+            tituloGrid: 'Derivada para cada ponto'
         };
     },
 
@@ -42,7 +43,8 @@ var OperacoesModule = {
 
         return {
             resultado: resultados,
-            tipoResultado: 'numberic' //Tipo de resultado
+            tipoResultado: 'numberic', //Tipo de resultado,
+            tituloGrid: 'Limite tendendo a cada ponto'
         };
     },
 
@@ -82,6 +84,7 @@ var OperacoesModule = {
 
         //Retorna um resumo do que foi feito
         return {
+            tituloGrid: resultadoObtido_completo.tituloGrid,
             tipoResultado: tipoResultado,
             funcao: funcaoConvertida,
             funcaoMatematica: funcaoMatematica,

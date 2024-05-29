@@ -20,7 +20,7 @@ var gridFuncao = MyGrid.VisualGrid({
             }
         },
         {
-            name: 'Resultado',
+            name: 'Saida',
             style: {
                 applies: ['header', 'body'],
                 textColor: 'black',
@@ -47,7 +47,7 @@ var gridDerivadaFuncao = MyGrid.VisualGrid({
             }
         },
         {
-            name: 'Derivada',
+            name: 'Resultado',
             style: {
                 applies: ['header', 'body'],
                 color: 'black',
@@ -81,7 +81,7 @@ function calcularOsPontos(funcaoMatematica, pontos, operacaoSelecionada, maxTent
 document.getElementById('btn-calcular').onclick = function(){
 
     let operacaoSelecionada = DomUtils.Input.getSelectedOption('operacao'),
-        opcoesCheckboxRecursos = DomUtils.Input.getSelectedOption('checkTabelaFuncao'),
+        recursosHabiltados = DomUtils.Input.getSelectedOption('recursos'),
         funcaoMatematica = DomUtils.Input.getValue('formula-input'),
         pontosInteresse = DomUtils.Input.getValue('pontosInteresse').split(',').map( (ponto)=>{ return Number(ponto) } );
     
@@ -123,7 +123,7 @@ document.getElementById('btn-calcular').onclick = function(){
     for( let i = 0 ; i < resultadosCalculos.pontos.length ; i++ ){
         samplesGridFuncao.push({
             'Ponto': resultadosCalculos.pontos[i],
-            'Resultado': resultadosCalculos.saidasPorPonto[ resultadosCalculos.pontos[i] ] 
+            'Saida': resultadosCalculos.saidasPorPonto[ resultadosCalculos.pontos[i] ] 
         })
     }
 
@@ -131,18 +131,43 @@ document.getElementById('btn-calcular').onclick = function(){
     for( let i = 0 ; i < resultadosCalculos.pontos.length ; i++ ){
         samplesGridDerivadaFuncao.push({
             'Ponto': resultadosCalculos.pontos[i],
-            'Derivada': resultadosCalculos.resultadoOperacao[ resultadosCalculos.pontos[i] ] 
+            'Resultado': resultadosCalculos.resultadoOperacao[ resultadosCalculos.pontos[i] ] 
         })
     }
 
-    //Gera a tabela com os pontos da função
-    gridFuncao.setSamples(samplesGridFuncao);
-    gridFuncao.redraw();
+    if( recursosHabiltados.checkTabelaFuncao ){
+        gridFuncao.show();
+        //Gera a tabela com os pontos da função
+        gridFuncao.setSamples(samplesGridFuncao);
+        gridFuncao.redraw();
+    }else{
+        gridFuncao.hide();
+    }
 
-    gridDerivadaFuncao.setSamples(samplesGridDerivadaFuncao);
-    gridDerivadaFuncao.redraw();
+    if( recursosHabiltados.checkTabelaResultado ){
+        gridDerivadaFuncao.show();
+        gridDerivadaFuncao.setSamples(samplesGridDerivadaFuncao);
+        gridDerivadaFuncao.setTitle( resultadosCalculos.tituloGrid );
+        gridDerivadaFuncao.redraw();
+    }else{
+        gridDerivadaFuncao.hide();
+    }
 }
 
 document.getElementById('pontosInteresse').onkeydown = function(){
     ValidationsModule.sumirAviso('pontos-warning-container');
+}
+
+document.getElementById('formula-input').addEventListener('contextmenu', function(evento) {
+    evento.preventDefault();
+}, false);
+
+document.getElementById('derivative').onclick = function(){
+    gridDerivadaFuncao.setTitle( 'Derivada para cada ponto' );
+    document.getElementById('tituloTabelaResultados').innerHTML = 'Tabela da Derivada da Função para os pontos:';
+}
+
+document.getElementById('limit').onclick = function(){
+    gridDerivadaFuncao.setTitle( 'Limite tendendo a cada ponto' );
+    document.getElementById('tituloTabelaResultados').innerHTML = 'Tabela de Limite da Função tendendo aos pontos:';
 }

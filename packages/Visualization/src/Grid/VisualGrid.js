@@ -323,8 +323,8 @@ MyGrid.VisualGrid = function(config={}){
         context._renderedHtmlLines = ``;
         context._columnsStyle = (config['style'] || context._config['style']) ? (config['style']['columns'] || context._config['style']['columns']) ? (config['style']['columns'] || context._config['style']['columns']) : {} : {};
 
-        context._title = config['title'] ? `
-            <h2 class='MyGrid-title${(context._customStyle.title || null) ? (' ' + context._customStyle.title) : ''}'> ${ config['title'] } </h2>
+        context._title = (config['title'] || context._config['title']) ? `
+            <h2 class='MyGrid-title${(context._customStyle.title || null) ? (' ' + context._customStyle.title) : ''}'> ${ (config['title'] || context._config['title']) } </h2>
         ` : '';
     
     
@@ -486,6 +486,7 @@ MyGrid.VisualGrid = function(config={}){
         const collectionToSet = newSamples._isSampleColletion ? newSamples : MyGrid.SampleCollection(newSamples);
         context.sampleCollection.setSamples(collectionToSet.samples);
         context.samples = context.sampleCollection.samples;
+        context.redraw();
     }
 
     //Similar ao setSamples, porém não sobrescreve nada, apenas acrescenta
@@ -505,6 +506,25 @@ MyGrid.VisualGrid = function(config={}){
         context.buildLayout();
         context.drawHtml();
         context._afterUpdateGrid();
+    }
+
+    context.getTitle = function(){
+        return document.getElementById(context._writeTo).querySelector('.MyGrid-title').innerHTML.trim();
+    }
+
+    context.setTitle = function(newTitle){
+        document.getElementById(context._writeTo).querySelector('.MyGrid-title').innerHTML = newTitle.trim();
+        context._config.title = newTitle;
+    }
+
+    context.show = function(){
+        document.getElementById(context._writeTo).style.visibility = 'visible';
+        document.getElementById(context._writeTo).style.display = 'block';
+    }
+
+    context.hide = function(){
+        document.getElementById(context._writeTo).style.visibility = 'hidden';
+        document.getElementById(context._writeTo).style.display = 'none';
     }
 
     context.destroy = function(){
