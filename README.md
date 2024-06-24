@@ -2,8 +2,8 @@
 Programa voltado para cálculo, para calcular derivadas de funções e outras coisas.
 
 # Imagens de exemplo
-![Imagem 1](https://github.com/WilliamJardim/Derivator/raw/main/assets/tela-principal.png)
-![Imagem 2](https://github.com/WilliamJardim/Derivator/raw/main/assets/tela-principal2.png)
+![Imagem 1](https://github.com/WilliamJardim/Derivator/blob/main/ilustrations/tela-principal.png)
+![Imagem 2](https://github.com/WilliamJardim/Derivator/blob/main/ilustrations/tela-principal2.png)
 
 # Licença
 **Derivator © 2024 by William Alves Jardim is licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International. To view a copy of this license, visit https://creativecommons.org/licenses/by-nc-sa/4.0/**
