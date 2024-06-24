@@ -332,7 +332,7 @@ MyGrid.VisualGrid = function(config={}){
         for( let i = 0 ; i < context._columnNames.length ; i++ )
         {   
             context._colunasHtml += `
-                <td class='MyGrid-justheader-column MyGrid-header-column ${(context._customStyle.header && context._customStyle.header.column || null) ? (context._customStyle.header.column + ' ') : ''}MyGrid-column ${ i == 0 ? 'MyGrid-first-column' : '' }${ i == 0 && (context._customStyle.body && context._customStyle.body.firstColumn || null) ? ' '+context._customStyle.body.firstColumn : ''} MyGrid-header-column-${context._columnNames[i]}'> ${ context._columnNames[i] } </td>
+                <td class='MyGrid-justheader-column MyGrid-header-column ${(context._customStyle.header && context._customStyle.header.column || null) ? (context._customStyle.header.column + ' ') : ''}MyGrid-column ${ i == 0 ? 'MyGrid-first-column' : '' }${ i == 0 && (context._customStyle.body && context._customStyle.body.firstColumn || null) ? ' '+context._customStyle.body.firstColumn : ''} MyGrid-header-column-${context._columnNames[i]} MyGrid-global-column-${context._columnNames[i]}'> ${ context._columnNames[i] } </td>
             `;
             context._columnNameMap[ i ] = context._columnNames[i];
         }
@@ -349,7 +349,7 @@ MyGrid.VisualGrid = function(config={}){
                 const colUniqueId = `col-${(new Date().getTime())}`;
     
                 sampleColunasTD += `
-                    <td class='MyGrid-index-${i}-${j} MyGrid-columnid-${colUniqueId} MyGrid-justcolumn ${(context._customStyle.body && context._customStyle.body.column || null) ? (context._customStyle.body.column + ' ') : ''}MyGrid-column ${ j == 0 ? 'MyGrid-first-column' : '' } MyGrid-column-${context._columnNames[j]}' > ${ sample.getColumnValue( context._columnNames[j] ) || context._emptyColumnValue } </td>
+                    <td class='MyGrid-index-${i}-${j} MyGrid-columnid-${colUniqueId} MyGrid-justcolumn ${(context._customStyle.body && context._customStyle.body.column || null) ? (context._customStyle.body.column + ' ') : ''}MyGrid-column ${ j == 0 ? 'MyGrid-first-column' : '' } MyGrid-column-${context._columnNames[j]} MyGrid-global-column-${context._columnNames[j]}' > ${ sample.getColumnValue( context._columnNames[j] ) || context._emptyColumnValue } </td>
                 `
             }   
     

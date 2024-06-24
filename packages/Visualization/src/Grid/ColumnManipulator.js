@@ -13,6 +13,7 @@ if( !globalThis.MyGrid ){
 MyGrid.ColumnManipulator = function(attributes={}){
     const context = AbstractClass(attributes);
     context.objectName = 'ColumnManipulator';
+    context.globalClassSelector = `MyGrid-global-column-${context.name}`;
 
     //Cria os getters e setters
     context.createGettersFromOriginalProperties();
@@ -36,11 +37,19 @@ MyGrid.ColumnManipulator = function(attributes={}){
     }
 
     context.hide = function(){
-        
+        [...document.getElementsByClassName(context.globalClassSelector)].forEach( function(element){
+            element.style.visibility = 'hidden';
+            element.style.display = 'none';
+        } );
     }
 
     context.show = function(){
-        
+        if( !context.style || !context.selfGrid ){ return };
+        [...document.getElementsByClassName(context.globalClassSelector)].forEach( function(element){
+            element.style.visibility = 'visible';
+            element.style.display = 'block';
+        } );
+        context.selfGrid.redraw();
     }
 
     return context;
